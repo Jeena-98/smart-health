@@ -1,0 +1,40 @@
+{% extends 'admin.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Admin</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'specialization' %}">
+        {% csrf_token %}
+        <h1 align="center"><i>Specialization</i></h1>
+        <br/>
+        <table align="center">
+            <tr>
+                <th>Category</th>
+                <td><input type="text" name="cat"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value=" Add "></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

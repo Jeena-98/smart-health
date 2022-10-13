@@ -1,0 +1,42 @@
+{% extends 'admin.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth/Admin</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:blue;">Queries Approval</h1><br/>
+    <table align="center" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Patient Name</th>
+            <th>Question</th>
+            <th>Status</th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.Ques}}</td>
+            <td><a href="{% url 'quesaprve' id=i.id %}">Approve</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'doctortemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Doctor</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 50%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="#">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Reply</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Answer</th>
+                <th><textarea name="ans"></textarea> </th>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

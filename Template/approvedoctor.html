@@ -1,0 +1,56 @@
+{% extends 'admin.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth/Admin</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:blue;">Doctor Approval</h1><br/>
+    <table align="center" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Clinic</th>
+            <th>Doctor Name</th>
+            <th>License</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Qualification</th>
+            <th>Specialization</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Status</th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.Name}}</td>
+            <td>{{i.DrName}}</td>
+            <td>{{i.License}}</td>
+            <td>{{i.Age}}</td>
+            <td>{{i.Gender}}</td>
+            <td>{{i.Qualification}}</td>
+            <td>{{i.Category}}</td>
+            <td>{{i.Email}}</td>
+            <td>{{i.Mobile}}</td>
+            <td><a href="{% url 'draprve' id=i.id %}">Approve</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'patienttemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Patient</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 60%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:blue;">View Answers</h1><br/>
+    <table align="center" border="1">
+        <tr>
+            <th>Question</th>
+            <th>Answer</th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.Ques}}</td>
+            <td>{{i.Ans}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+  </body>
+</html>
+{% endblock %}

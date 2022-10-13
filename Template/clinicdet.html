@@ -1,0 +1,144 @@
+{% extends 'clinictemp.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+    <script type="text/javascript"  src="{% static 'jquery-3.4.1.js' %}" ></script>
+    <script type="text/javascript">
+
+         $(document).ready(function()
+          {
+                $('#sid').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../det1",
+      data:{ q : $(this).val()},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 //$('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('<option />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.district);
+                                $('#did').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+                 $('#did').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../det2",
+      data:{ q : $(this).val()},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 //$('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('<option />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.Place);
+                                $('#pid').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+            });
+
+    </script>
+
+</head>
+<body>
+    <form method="post" action="{% url 'clinicdet' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Clinic Details</h1><br/>
+        <table align="center">
+            <tr>
+                <th>State</th>
+                <td><select name="state" id="sid">
+                    <option value="0">--Select--</option>
+                    {% for i in k %}
+                    <option value="{{i.id}}">{{i.State}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>District</th>
+                <td><select name="dist" id="did">
+                    <option value="0">--Select--</option>
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td><select name="place" id="pid">
+                    <option value="0">--Select--</option>
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Clinic</th>
+                <td><select name="clinic" id="clid">
+                    <option value="0">--Select--</option>
+                    {% for i in p %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Specialization</th>
+                <td><select name="spe">
+                    <option value="0">--Select--</option>
+                    {% for i in q %}
+                    <option value="{{i.id}}">{{i.Category}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><input type="file" name="photo"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

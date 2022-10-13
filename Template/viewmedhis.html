@@ -1,0 +1,88 @@
+{% extends 'patienttemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Patient</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 25%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 5px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <h1 align="center" style="color:blue;">View Medical History</h1><br/>
+    <table border="1">
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Blood Group</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Physician</th>
+            <th>Smoking</th>
+            <th>Drinking</th>
+            <th>Disease Before</th>
+            <th>Reaction</th>
+            <th>Medicine</th>
+            <th>Dosage</th>
+            <th>Purpose</th>
+            <th>Diabetic</th>
+            <th>Sugar</th>
+            <th>Allergy</th>
+            <th>Family History</th>
+            <th>Immunity</th>
+            <th>Tb</th>
+            <th>Chest Pain</th>
+            <th>Stroke</th>
+            <th>Rhimatic Fever</th>
+            <th>Heart Attack</th>
+            <th>MVP</th>
+            <th>Asthma</th>
+            <th>Pacemaker</th>
+            <th>Thyroid</th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.DrName}}</td>
+            <td>{{i.Bgroup}}</td>
+            <td>{{i.Height}}</td>
+            <td>{{i.Weight}}</td>
+            <td>{{i.Physician}}</td>
+            <td>{{i.Smoke}}</td>
+            <td>{{i.Drink}}</td>
+            <td>{{i.Disease}}</td>
+            <td>{{i.Reaction}}</td>
+            <td>{{i.Medicine}}</td>
+            <td>{{i.Dosage}}</td>
+            <td>{{i.Purpose}}</td>
+            <td>{{i.Diabetic}}</td>
+            <td>{{i.Sugar}}</td>
+            <td>{{i.Allergy}}</td>
+            <td>{{i.Family}}</td>
+            <td>{{i.Immunity}}</td>
+            <td>{{i.Tb}}</td>
+            <td>{{i.Chest}}</td>
+            <td>{{i.Stroke}}</td>
+            <td>{{i.Fever}}</td>
+            <td>{{i.Attack}}</td>
+            <td>{{i.MVP}}</td>
+            <td>{{i.Asthma}}</td>
+            <td>{{i.Pacemaker}}</td>
+            <td>{{i.Thyroid}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

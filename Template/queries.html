@@ -1,0 +1,39 @@
+{% extends 'patienttemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'queries' %}">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Ask Questions</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Question</th>
+                <td><input type="text" name="ques"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value=" Add "></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

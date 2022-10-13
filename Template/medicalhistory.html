@@ -1,0 +1,144 @@
+{% extends 'doctortemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medical History</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'medihis' %}">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Medical History</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Patient Name</th>
+                <td><select name="pname">
+                    <option value="0">--Select--</option>
+                    {% for i in k %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Blood Group</th>
+                <td><input type="text" name="bgroup"></td>
+            </tr>
+            <tr>
+                <th>Height</th>
+                <td><input type="text" name="ht"></td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td><input type="text" name="wt"></td>
+            </tr>
+            <tr>
+                <th>Physician</th>
+                <td><input type="text" name="phy"></td>
+            </tr>
+            <tr>
+                <th>Smoke</th>
+                <td><input type="text" name="smoke"></td>
+            </tr>
+            <tr>
+                <th>Drinking</th>
+                <td><input type="text" name="drinking"></td>
+            </tr>
+            <tr>
+                <th>Disease Before</th>
+                <td><input type="text" name="disease"></td>
+            </tr>
+            <tr>
+                <th>Reaction</th>
+                <td><input type="text" name="reaction"></td>
+            </tr>
+            <tr>
+                <th>Medicine</th>
+                <td><input type="text" name="med"></td>
+            </tr>
+            <tr>
+                <th>Dosage</th>
+                <td><input type="text" name="dos"></td>
+            </tr>
+            <tr>
+                <th>Purpose</th>
+                <td><input type="text" name="pur"></td>
+            </tr>
+            <tr>
+                <th>Diabetic</th>
+                <td><input type="text" name="diab"></td>
+            </tr>
+            <tr>
+                <th>Sugar</th>
+                <td><input type="text" name="sugar"></td>
+            </tr>
+            <tr>
+                <th>Allergy</th>
+                <td><input type="text" name="allergy"></td>
+            </tr>
+            <tr>
+                <th>Family History</th>
+                <td><input type="text" name="famhis"></td>
+            </tr>
+            <tr>
+                <th>Immunity</th>
+                <td><input type="text" name="immunity"></td>
+            </tr>
+            <tr>
+                <th>Tb</th>
+                <td><input type="text" name="tb"></td>
+            </tr>
+            <tr>
+                <th>Chest Pain</th>
+                <td><input type="text" name="chest"></td>
+            </tr>
+            <tr>
+                <th>Stroke</th>
+                <td><input type="text" name="stroke"></td>
+            </tr>
+            <tr>
+                <th>Rhimatic Fever</th>
+                <td><input type="text" name="rhm"></td>
+            </tr>
+            <tr>
+                <th>Heart Attack</th>
+                <td><input type="text" name="attack"></td>
+            </tr>
+            <tr>
+                <th>MVP</th>
+                <td><input type="text" name="mvp"></td>
+            </tr>
+            <tr>
+                <th>Asthma</th>
+                <td><input type="text" name="asthma"></td>
+            </tr>
+            <tr>
+                <th>Pacemaker</th>
+                <td><input type="text" name="pace"></td>
+            </tr>
+            <tr>
+                <th>Thyroid</th>
+                <td><input type="text" name="thyroid"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

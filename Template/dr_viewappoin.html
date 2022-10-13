@@ -1,0 +1,45 @@
+{% extends 'doctortemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Doctor</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <table align="center" border="1">
+        <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Token</th>
+            <th>Status</th>
+            <th>Cancel Appointment</th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.Name}}</td>
+            <td>{{i.Date}}</td>
+            <td>{{i.Time}}</td>
+            <td>{{i.Token}}</td>
+            <td>{{i.Status}}</td>
+            <td><a href="{% url 'canceldr' id=i.id%}">Cancel</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

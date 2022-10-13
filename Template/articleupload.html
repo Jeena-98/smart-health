@@ -1,0 +1,44 @@
+{% extends 'doctortemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth/Article Upload</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'article' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Article Upload</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Title</th>
+                <td><input type="text" name="title"></td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td><input type="file" name="file"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="submit" value=" Upload"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends 'patienttemp.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth\Clinic</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 40%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+     <script type="text/javascript"  src="{% static 'jquery-3.4.1.js' %}" ></script>
+    <script type="text/javascript" >
+        $(document).ready(function()
+          {
+                $('#cln').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../drp",
+      data:{ q : tech},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				// $('#lid').empty();
+$.each(data, function(key, val)
+{
+//alert('hii')
+$("#div").css("display","");
+                                var opt = $('<td />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.pid);
+                                $('#tbl').append(opt);
+                                var opt1 = $('<td />'); // here we're creating a new select option with for each subject
+                                opt1.val(val.id);
+                                opt1.text(val.did);
+                                $('#tbl').append(opt1);
+                                var opt2 = $('<td />'); // here we're creating a new select option with for each subject
+                                opt2.val(val.id);
+                                opt2.text(val.sid);
+                                $('#tbl').append(opt2);
+                                var opt3 = $('<td />'); // here we're creating a new select option with for each subject
+                                opt3.val(val.id);
+                                opt3.text(val.spid);
+                                $('#tbl').append(opt3);
+                                var opt4 = $('<td />'); // here we're creating a new select option with for each subject
+                                opt4.val(val.id);
+                                opt4.text(val.Photo);
+                                $('#tbl').append(opt4);
+
+                            });
+                        }
+
+                    });
+
+                });
+
+            });
+
+ </script>
+
+</head>
+<body>
+    <form action="" method="post">
+        <h1 align="center" style="color:blue;">Search Clinic</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Select Clinic</th>
+                <td><select name="clinic" id="cln">
+                    <option value="0">--Select--</option>
+                    {% for i in k %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+        </table><br/>
+        <div id="div" style="display:none">
+             <table align="center" id="tbl" border="1">
+                <tr>
+                    <th>Place</th>
+                    <th>District</th>
+                    <th>State</th>
+                    <th>Specialization</th>
+                    <th>Photo</th>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
+{% endblock %}

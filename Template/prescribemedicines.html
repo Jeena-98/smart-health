@@ -1,0 +1,56 @@
+{% extends 'doctortemp.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescribe Medicines</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+</head>
+<body>
+    <form method="post" action="{% url 'prescribe' %}">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Prescribe Medicines</h1><br/>
+        <table align="center">
+            <tr>
+                <th>Patient Name</th>
+                <td><select name="pname">
+                    <option value="0">--Select--</option>
+                    {% for i in k %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Medicine</th>
+                <td><input type="text" name="medicine"></td>
+            </tr>
+            <tr>
+                <th>Dosage</th>
+                <td><input type="text" name="dosage"></td>
+            </tr>
+            <tr>
+                <th>No.of Day</th>
+                <td><input type="text" name="nod"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value=" Add"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}

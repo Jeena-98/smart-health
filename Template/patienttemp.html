@@ -1,0 +1,266 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <title>SmartHealth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="Poly Clinic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="{% static 'Formtemp/css/bootstrap.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'Formtemp/css/style.css' %}" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="{% static 'Formtemp/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+</head>
+
+<body>
+    <!-- banner -->
+    <div class="inner-banner" id="home">
+        <!-- header -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">
+
+                <h1>
+                    <a class="navbar-brand text-white" href="index.html">
+                        Smart
+                        <span>Health</span>
+                    </a>
+                </h1>
+                <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-lg-auto text-center">
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link text-white" href="{% url 'patienthome' %}">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                         <li class="nav-item dropdown mr-3">
+                            <a class="nav-link dropdown-toggle  text-white text-capitalize" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Appointment
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{% url 'appointment' %}">Take Appointment</a>
+                                <a class="dropdown-item" href="{% url 'viewapp' %}">View and Cancel Appointment</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link  text-white text-capitalize" href="{% url 'queries' %}">Queries</a>
+                        </li>
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link  text-white text-capitalize" href="{% url 'viewans' %}">View Answers</a>
+                        </li>
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link  text-white text-capitalize" href="{% url 'sugg' %}">Suggestions</a>
+                        </li>
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link  text-white text-capitalize" href="{% url 'viewmed' %}">Medical History</a>
+                        </li>
+                        <li class="nav-item  mr-3">
+                            <a class="nav-link  text-white text-capitalize" href="{% url 'viewpre' %}">Prescription</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </header>
+        <!-- //header -->
+        <!-- //container -->
+    </div>
+    <!-- breadcrumbs -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+    </nav>
+    <!-- //breadcrumbs -->
+    <!-- //banner -->
+    <!-- contact -->
+    <section class="wthree-row pt-3 pb-lg-5 w3-contact">
+        <div class="container py-sm-5 pt-0 pb-5">
+            {% block content %}
+            <div class="title-section text-center pb-lg-5">
+                <h4>24/7</h4>
+                <h3 class="w3ls-title text-center text-capitalize">affordable medicare</h3>
+            </div>
+            <div class="row contact-form pt-lg-5">
+                <!-- contact details -->
+                <div class="col-lg-4 contact-bottom mt-lg-0 mt-5">
+                    <div class="contact-details-top">
+                        <h5 class="sub-title-wthree">contact us</h5>
+                        <img src="{% static 'Formtemp/images/contact.jpg' %}" alt="team-image" class="img-fluid  mb-3" />
+                        <p>M Etiam elit elit, elementum sed varius at, adipiscing vitae est.</p>
+                    </div>
+                    <div class="address">
+                        <h5 class="sub-title-wthree">contact info</h5>
+                        <div class="row wthree-cicon">
+                            <span class="fas fa-envelope-open mr-3"></span>
+                            <a href="mailto:info@example.com">mail@polyclinic.com</a>
+                        </div>
+                        <div class="row wthree-cicon">
+                            <span class="fas fa-phone-volume mr-3"></span>
+                            <h6>+456 123 7890</h6>
+                        </div>
+                        <div class="row wthree-cicon">
+                            <span class="fas fa-globe mr-3"></span>
+                            <a href="#">www.polyclinic.com</a>
+                        </div>
+                    </div>
+                    <div class="footerv2-w3ls">
+                        <h5 class="sub-title-wthree">follow us</h5>
+                        <ul class="social-iconsv2 agileinfo">
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- //contact details -->
+                <div class="col-lg-8 wthree-form-left px-lg-5 mt-lg-0 mt-5">
+                    <!-- contact form grid -->
+                    <div class="contact-top1">
+                        <h5 class="sub-title-wthree">contact form</h5>
+                        <form action="#" method="get" class="pc-contact">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="contact-name">Name
+                                        <span>*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="contact-name" required>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="contact-email">Email
+                                        <span>*</span>
+                                    </label>
+                                    <input type="email" class="form-control" id="contact-email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Subject
+                                    <span>*</span>
+                                </label>
+                                <input type="text" class="form-control" id="contact-subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">
+                                    Your Message
+                                    <span>*</span>
+                                </label>
+                                <textarea class="form-control" rows="5" id="contact-message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block w-25">Send</button>
+                        </form>
+                    </div>
+                    <!--  //contact form grid ends here -->
+                </div>
+            </div>
+            {% endblock %}
+            <!-- //contact details container -->
+        </div>
+        <!-- contact map grid -->
+
+        <!--//contact map grid ends here-->
+    </section>
+    <!-- footer -->
+    <footer class="footer py-md-5 pt-md-3 pb-sm-5">
+
+        <!-- //footer bottom -->
+    </footer>
+    <!-- //footer -->
+    <!-- quick contact -->
+
+    <!-- //quick contact -->
+    <!-- copyright -->
+    <div class="cpy-right text-center">
+        <p>© 2020 SmartHealth. All rights reserved
+        </p>
+    </div>
+    <!-- //copyright -->
+    <!-- js -->
+    <script src="{% static 'Formtemp/js/jquery-2.2.3.min.js' %}"></script>
+    <!-- //js -->
+    <!-- //fixed quick contact -->
+    <script>
+        $(function () {
+            var hidden = true;
+            $(".heading").click(function () {
+                if (hidden) {
+                    $(this).parent('.outer-col').animate({
+                        bottom: "0"
+                    }, 1200);
+                } else {
+                    $(this).parent('.outer-col').animate({
+                        bottom: "-305px"
+                    }, 1200);
+                }
+                hidden = !hidden;
+            });
+        });
+    </script>
+    <!-- //fixed quick contact -->
+    <!-- start-smooth-scrolling -->
+    <script src="{% static 'Formtemp/js/easing.js' %}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <script src="{% static 'Formtemp/js/SmoothScroll.min.js' %}"></script>
+    <!-- //end-smooth-scrolling -->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'Formtemp/js/bootstrap.js' %}"></script>
+</body>
+
+</html>

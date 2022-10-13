@@ -1,0 +1,202 @@
+{% extends 'patienttemp.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHealth/Appointment</title>
+    <style>
+        table {
+                border-collapse: collapse;
+                width: 30%;
+               }
+
+                th, td {
+                 text-align: center;
+                padding: 10px;
+                }
+
+                tr:nth-child(even) {background-color: #C8EEF3;}
+                }
+    </style>
+    <script type="text/javascript"  src="{% static 'jquery-3.4.1.js' %}" ></script>
+    <script type="text/javascript">
+
+         $(document).ready(function()
+          {
+                $('#did').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../app1",
+      data:{ q : $(this).val()},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 //$('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('<option />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.Place);
+                                $('#pid').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+                 $('#clid').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../app2",
+      data:{ q : $(this).val()},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 //$('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('<option />'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.DrName);
+                                $('#drid').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+                $('#tid').change(function ()
+				 {
+
+                    var tech = $('#clid').val();
+                   // alert(tech)
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../drp3",
+      data:{ q : tech},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				 //$('#branchid').empty();
+$.each(data, function(key, val)
+{
+//alert(key)
+                                var opt = $('#toid'); // here we're creating a new select option with for each subject
+                                opt.val(parseInt(val.Token)+1);
+                                opt.text(val.Token);
+                                $('#toid').append(opt); //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+                });
+
+            });
+
+    </script>
+
+</head>
+<body>
+    <form method="post" action="{% url 'appointment' %}">
+        {% csrf_token %}
+        <h1 align="center" style="color:blue;">Take Appointment</h1><br/>
+        <table align="center">
+            <tr>
+                <th>District</th>
+                <td><select name="dist" id="did">
+                    <option value="0">--Select--</option>
+                    {% for i in k %}
+                    <option value="{{i.id}}">{{i.district}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td><select name="loc" id="pid">
+                    <option value="0">--Select--</option>
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Specialization</th>
+                <td><select name="sp">
+                    <option value="0">--Select--</option>
+                    {% for i in p %}
+                    <option value="{{i.id}}">{{i.Category}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Clinic</th>
+                <td><select name="clinic" id="clid">
+                    <option value="0">--Select--</option>
+                    {% for i in r %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Doctor</th>
+                <td><select name="dr" id="drid">
+                    <option value="0">--Select--</option>
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td><input type="date" name="date"></td>
+            </tr>
+            <tr>
+                <th>Time slot</th>
+                <td><select name="time" id="tid">
+                    <option value="0">--Select--</option>
+                    <option value="8am">08.00 AM</option>
+                    <option value="8.30am">08.30 AM</option>
+                    <option value="9am">09.00 AM</option>
+                    <option value="9.30am">09.30 AM</option>
+                    <option value="10am">10.00 AM</option>
+                    <option value="10.30am">10.30 AM</option>
+                    <option value="11am">11.00 AM</option>
+                    <option value="11.30am">11.30 AM</option>
+                    <option value="12pm">12.00 PM</option>
+                    <option value="12.30pm">12.30 PM</option>
+                    <option value="2pm">02.00 PM</option>
+                    <option value="2.30pm">02.30 PM</option>
+                    <option value="3pm">03.00 PM</option>
+                    <option value="3.30pm">03.30 PM</option>
+                    <option value="4pm">04.00 PM</option>
+                    <option value="4.30pm">04.30 PM</option>
+                    <option value="5pm">05.00 PM</option>
+                    <option value="5.30pm">05.30 PM</option>
+                    <option value="6pm">06.00 PM</option>
+                </select> </td>
+            </tr>
+            <tr>
+                <th>Token No.</th>
+                <td><input type="text" name="token" id="toid"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="Take Appointment"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{% endblock %}
